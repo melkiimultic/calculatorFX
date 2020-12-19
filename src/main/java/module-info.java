@@ -1,10 +1,9 @@
-module org.example {
+ module org.example {
     requires javafx.controls;
+    requires javafx.graphics;
     requires javafx.fxml;
     requires org.apache.commons.lang3;
 
-    opens org.example to javafx.fxml;
+    opens org.example to javafx.fxml,javafx.graphics;
     exports org.example;
-
-
 }
