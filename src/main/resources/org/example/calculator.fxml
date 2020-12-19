@@ -20,17 +20,17 @@
       </StackPane>
       <HBox prefHeight="100.0" prefWidth="500.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="7">
+            <Button fx:id="seven" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="7">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="8">
+            <Button fx:id="eight" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="8">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="9">
+            <Button fx:id="nine" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="9">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -40,7 +40,7 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#pressMinus" prefHeight="100.0" prefWidth="100.0" text="-">
+            <Button fx:id="minus" mnemonicParsing="false" onAction="#pressMinus" prefHeight="100.0" prefWidth="100.0" text="-">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
@@ -49,27 +49,27 @@
       </HBox>
       <HBox prefHeight="100.0" prefWidth="500.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="4">
+            <Button fx:id="four" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="4">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="5">
+            <Button fx:id="five" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="5">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="6">
+            <Button fx:id="six" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="6">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#pressRestThreeOperators" prefHeight="100.0" prefWidth="100.0" text="/">
+            <Button fx:id="div" mnemonicParsing="false" onAction="#pressRestThreeOperators" prefHeight="100.0" prefWidth="100.0" text="/">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#pressRestThreeOperators" prefHeight="100.0" prefWidth="100.0" text="*">
+            <Button fx:id="mult" mnemonicParsing="false" onAction="#pressRestThreeOperators" prefHeight="100.0" prefWidth="100.0" text="*">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
@@ -78,27 +78,27 @@
       </HBox>
       <HBox prefHeight="100.0" prefWidth="500.0">
          <children>
-            <Button fx:id="1" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="1">
+            <Button fx:id="one" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="1">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="2">
+            <Button fx:id="two" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="2">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="3">
+            <Button fx:id="three" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="3">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#pressDelete" prefHeight="100.0" prefWidth="100.0" text="DEL">
+            <Button fx:id="del" mnemonicParsing="false" onAction="#pressDelete" prefHeight="100.0" prefWidth="100.0" text="DEL">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#pressClear" prefHeight="100.0" prefWidth="100.0" text="CLR">
+            <Button fx:id="clear" mnemonicParsing="false" onAction="#pressClear" prefHeight="100.0" prefWidth="100.0" text="CLR">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -107,12 +107,12 @@
       </HBox>
       <HBox prefHeight="100.0" prefWidth="500.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="0">
+            <Button fx:id="zero" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="0">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#pressPoint" prefHeight="100.0" prefWidth="100.0" text=".">
+            <Button fx:id="point" mnemonicParsing="false" onAction="#pressPoint" prefHeight="100.0" prefWidth="100.0" text=".">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -122,7 +122,7 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="HISTORY">
+            <Button fx:id="history" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="HISTORY">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

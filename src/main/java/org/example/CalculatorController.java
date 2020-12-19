@@ -63,7 +63,7 @@ public class CalculatorController {
             return;
         }
 
-        if (StringUtils.endsWith(text, "-") || StringUtils.endsWith(text, "-")) {
+        if (StringUtils.endsWith(text, operator) || StringUtils.endsWith(text, "-")) {
             result.setText(text + "0.");
             secondHasPoint = true;
             return;
@@ -81,17 +81,20 @@ public class CalculatorController {
             return;
         }
         String text = result.getText();
+        if (text.equals("-")) {
+            return;
+        }
         if (operator.isEmpty()) {
             operator = "-";
             num1 = new BigDecimal(text);
-            result.setText(text+"-");
+            result.setText(text + "-");
             return;
         }
         if (!positiveSecNum) {
             return;
         }
         result.setText(text + "-");
-        positiveSecNum =false;
+        positiveSecNum = false;
     }
 
     @FXML
@@ -109,16 +112,17 @@ public class CalculatorController {
 
     @FXML
     public void pressEquals(ActionEvent event) {
-        if (operator.isEmpty() || start) {
-            result.setText("Illegal operation!");
-            resetFlags();
-            return;//todo some kind of msg
+        if (start || operator.isEmpty()) {
+            return;
         }
-
-        String[] splitted = StringUtils.split(result.getText(), operator);
+        String text = result.getText();
+        if (text.endsWith(operator) || text.endsWith("-")) {
+            return;
+        }
+        String[] splitted = StringUtils.split(text, operator);
         String secNum = splitted[1];
         if (!positiveSecNum && operator.equals("-")) {
-            secNum = "-"+secNum;
+            secNum = "-" + secNum;
         }
         num2 = new BigDecimal(secNum);
         String output = model.calculate(num1, num2, operator);
@@ -140,12 +144,23 @@ public class CalculatorController {
 
     @FXML
     public void pressDelete(ActionEvent event) {
+        if (start) {
+            return;
+        }
+
         if (!result.getText().isEmpty()) {
             String current = result.getText();
+
+            if (operator.isEmpty() && StringUtils.endsWith(current, ".")) {
+                firstHasPoint = false;
+            }
 
             if (!operator.isEmpty()) {
                 if (StringUtils.endsWith(current, "-") && !positiveSecNum) {
                     positiveSecNum = true;
+                    String chopped = StringUtils.chop(current);
+                    result.setText(chopped);
+                    return;
                 }
                 if (StringUtils.endsWith(current, operator)) {
                     operator = "";
@@ -154,9 +169,6 @@ public class CalculatorController {
                     secondHasPoint = false;
 
                 }
-            }
-            if (StringUtils.endsWith(current, ".")) {
-                firstHasPoint = false;
             }
 
             String chopped = StringUtils.chop(current);

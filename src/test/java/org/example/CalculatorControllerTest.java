@@ -41,18 +41,168 @@ public class CalculatorControllerTest extends ApplicationTest {
     @Test
     @DisplayName("Button 1 can be pressed")
     public void testButton1() {
-        clickOn("#1");
+        clickOn("#one");
         verifyThat("#result", hasText("1"));
     }
 
     @Test
     @DisplayName("1+1=2")
-    public void testSumm() {
-        clickOn("#1");
+    public void testSum() {
+        clickOn("#one");
         clickOn("#plus");
-        clickOn("#1");
+        clickOn("#one");
         clickOn("#equals");
         verifyThat("#result", hasText("1+1=2"));
     }
 
+    @Test
+    @DisplayName("1/3=0.333333333;9 numbers after point")
+    public void testScaleAndRounding() {
+        clickOn("#one");
+        clickOn("#div");
+        clickOn("#three");
+        clickOn("#equals");
+        verifyThat("#result", hasText("1/3=0.333333333"));
+    }
+
+    @Test
+    @DisplayName("1+9=10; no trailing zeros")
+    public void testTrailingZeros() {
+        clickOn("#one");
+        clickOn("#plus");
+        clickOn("#nine");
+        clickOn("#equals");
+        verifyThat("#result", hasText("1+9=10"));
+    }
+
+    @Test
+    @DisplayName("Division by zero")
+    public void testDivisionByZero() {
+        clickOn("#one");
+        clickOn("#div");
+        clickOn("#zero");
+        clickOn("#equals");
+        verifyThat("#result", hasText("Division by zero!"));
+    }
+
+    @Test
+    @DisplayName("Clear and insert new expression")
+    public void testClrButton() {
+        clickOn("#one");
+        clickOn("#div");
+        clickOn("#one");
+        clickOn("#clear");
+        verifyThat("#result", hasText(""));
+        clickOn("#one");
+        clickOn("#plus");
+        clickOn("#nine");
+        clickOn("#equals");
+        verifyThat("#result", hasText("1+9=10"));
+
+    }
+
+    @Test
+    @DisplayName(".1-.2=-0.1")
+    public void testAddMissingZerosWhenMinus() {
+        clickOn("#point");
+        clickOn("#one");
+        clickOn("#minus");
+        clickOn("#point");
+        clickOn("#two");
+        clickOn("#equals");
+        verifyThat("#result", hasText("0.1-0.2=-0.1"));
+    }
+
+    @Test
+    @DisplayName(".1+.2=0.3")
+    public void testAddMissingZerosWhenOtherOperators() {
+        clickOn("#point");
+        clickOn("#one");
+        clickOn("#plus");
+        clickOn("#point");
+        clickOn("#two");
+        clickOn("#equals");
+        verifyThat("#result", hasText("0.1+0.2=0.3"));
+    }
+
+    @Test
+    @DisplayName("can insert minus after operator")
+    public void testMinusAfterOperator() {
+        clickOn("#minus");
+        clickOn("#two");
+        clickOn("#div");
+        clickOn("#minus");
+        clickOn("#one");
+        clickOn("#equals");
+        verifyThat("#result", hasText("-2/-1=2"));
+    }
+    @Test
+    @DisplayName("can't insert second minus before first num")
+    public void testMinusBeforeFirstNum() {
+        clickOn("#minus");
+        clickOn("#minus");
+        clickOn("#one");
+        verifyThat("#result", hasText("-1"));
+    }
+
+    @Test
+    @DisplayName("can't insert plus/div/mult after operator")
+    public void testSecondOperator() {
+        clickOn("#two");
+        clickOn("#div");
+        clickOn("#plus");
+        clickOn("#mult");
+        clickOn("#div");
+        verifyThat("#result", hasText("2/"));
+    }
+
+    @Test
+    @DisplayName("delete last symbol")
+    public void testDelButton() {
+        clickOn("#two");
+        clickOn("#div");
+        clickOn("#minus");
+        clickOn("#one");
+        clickOn("#del");
+        clickOn("#del");
+        verifyThat("#result", hasText("2/"));
+    }
+
+    @Test
+    @DisplayName("div/plus/mult/equals are blocked at start")
+    public void testBlockedSymbolsAtStart() {
+        clickOn("#div");
+        verifyThat("#result", hasText(""));
+        clickOn("#mult");
+        verifyThat("#result", hasText(""));
+        clickOn("#plus");
+        verifyThat("#result", hasText(""));
+        clickOn("#equals");
+        verifyThat("#result", hasText(""));
+
+    }
+
+    @Test
+    @DisplayName("equals is blocked if operator is absent")
+    public void testEqualsBeforeOperator() {
+        clickOn("#one");
+        clickOn("#equals");
+        verifyThat("#result", hasText("1"));
+        clickOn("#minus");
+        clickOn("#equals");
+        verifyThat("#result", hasText("1-"));
+
+    }
+    @Test
+    @DisplayName("can't put second point after deleting operator")
+    public void testPointWithDeleteLogic() {
+        clickOn("#one");
+        clickOn("#point");
+        clickOn("#two");
+        clickOn("#div");
+        clickOn("#del");
+        clickOn("#point");
+        verifyThat("#result", hasText("1.2"));
+
+    }
 }
