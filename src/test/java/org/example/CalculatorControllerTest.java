@@ -8,6 +8,7 @@ import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit5.ApplicationTest;
@@ -38,9 +39,20 @@ public class CalculatorControllerTest extends ApplicationTest {
     }
 
     @Test
+    @DisplayName("Button 1 can be pressed")
     public void testButton1() {
         clickOn("#1");
         verifyThat("#result", hasText("1"));
+    }
+
+    @Test
+    @DisplayName("1+1=2")
+    public void testSumm() {
+        clickOn("#1");
+        clickOn("#plus");
+        clickOn("#1");
+        clickOn("#equals");
+        verifyThat("#result", hasText("1+1=2"));
     }
 
 }
