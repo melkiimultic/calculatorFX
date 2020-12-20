@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 
 
 public class CalculatorController {
+
     @FXML
     private Label result;
 
@@ -23,6 +24,7 @@ public class CalculatorController {
 
 
     Model model = new Model();
+    CalculatorDataSource dataSource = CalculatorDataSource.getInstance();
 
     @FXML
     public void pressNumbers(ActionEvent event) {
@@ -133,6 +135,7 @@ public class CalculatorController {
         }
         result.setText(result.getText() + "=" + output);
         resetFlags();
+        dataSource.saveExpression(output);//todo transactional
     }
 
     @FXML
@@ -177,6 +180,7 @@ public class CalculatorController {
 
     }
 
+
     private void resetFlags() {
         operator = "";
         start = true;
@@ -184,6 +188,7 @@ public class CalculatorController {
         secondHasPoint = false;
         positiveSecNum = true;
     }
+
 
 
 }

@@ -24,7 +24,7 @@ public class App extends Application {
             stage.setScene(scene);
             stage.show();
         } catch (IOException e){
-            //выводить окошко все пошло не так
+            throw new IllegalStateException(e);
         }
     }
 

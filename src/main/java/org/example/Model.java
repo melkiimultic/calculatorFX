@@ -17,7 +17,7 @@ public class Model {
                 return ans2;
             case "/":
                 if(secondNum.compareTo(BigDecimal.ZERO)==0){
-                   return "Division by zero!";// todo illegal operation
+                   return "Division by zero!";
                 }
                 BigDecimal bd3 = firstNum.divide(secondNum,9,RoundingMode.HALF_UP).stripTrailingZeros();
                 String ans3 = bd3.toPlainString();
@@ -27,7 +27,7 @@ public class Model {
                 String ans4 = bd4.toPlainString();
                 return ans4;
             default:
-                throw new IllegalArgumentException("Don't know shit on "+operator);
+                throw new IllegalArgumentException("Don't know shit on "+operator);//todo
         }
     }
 }
