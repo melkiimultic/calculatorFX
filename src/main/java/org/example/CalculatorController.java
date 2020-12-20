@@ -2,10 +2,13 @@ package org.example;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 
 
@@ -133,9 +136,10 @@ public class CalculatorController {
             resetFlags();
             return;
         }
-        result.setText(result.getText() + "=" + output);
+        String finalText = result.getText() + "=" + output;
+        result.setText(finalText);
         resetFlags();
-        dataSource.saveExpression(output);//todo transactional
+        dataSource.saveExpression(finalText);//todo transactional
     }
 
     @FXML
@@ -178,6 +182,18 @@ public class CalculatorController {
             result.setText(chopped);
         }
 
+    }
+    @FXML
+    private void pressHistory(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("history.fxml"));
+            Parent root = loader.load();
+            HistoryController controller = loader.getController();
+            controller.showHistory(root);
+
+        } catch (IOException e){
+            throw new IllegalStateException("Can't create history window");
+        }
     }
 
 
