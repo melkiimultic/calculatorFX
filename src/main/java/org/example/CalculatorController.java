@@ -30,9 +30,6 @@ public class CalculatorController {
     Model model = new Model();
     CalculatorDataSource dataSource = CalculatorDataSource.getInstance();
 
-    public void configLabel(){
-        this.result.setWrapText(true);
-    }
 
     @FXML
     public void pressNumbers(ActionEvent event) {

@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="pane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.HistoryController">
-   <content>
-      <Label fx:id="text" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="395.0" prefWidth="354.0" textAlignment="JUSTIFY" wrapText="true">
-         <font>
-            <Font size="24.0" />
-         </font></Label>
-   </content>
-</ScrollPane>
+
+<TextArea fx:id="text" prefHeight="200.0" prefWidth="200.0" wrapText="true" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.HistoryController">
+   <font>
+      <Font size="24.0" />
+   </font>
+</TextArea>
