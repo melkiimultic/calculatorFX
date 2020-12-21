@@ -10,7 +10,7 @@ public class CalculatorDataSource {
 
     private static CalculatorDataSource instance = null;
 
-    private static final String CON_STR = "jdbc:sqlite:D:/myCalc.db";
+    private static final String CON_STR = "jdbc:sqlite:myCalc.db";
 
     private static final Connection CONNECTION;
 

@@ -12,6 +12,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit5.ApplicationTest;
+import org.testfx.matcher.control.TextInputControlMatchers;
 
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.control.LabeledMatchers.hasText;
@@ -203,6 +204,50 @@ public class CalculatorControllerTest extends ApplicationTest {
         clickOn("#del");
         clickOn("#point");
         verifyThat("#result", hasText("1.2"));
+
+    }
+    @Test
+    @DisplayName("history button shows ten last expressions")
+    public void testPressHistory(){
+        clickOn("#two");
+        clickOn("#plus");
+        clickOn("#two");
+        clickOn("#equals");
+        for (int i=0;i<10;i++){
+            clickOn("#one");
+            clickOn("#plus");
+            clickOn("#two");
+            clickOn("#equals");
+        }
+        clickOn("#history");
+        String finalText = "\n";
+        for (int i=0;i<9;i++){
+            finalText=finalText+"1+2=3"+"\n";
+        }
+        finalText=finalText+"1+2=3";
+        verifyThat("#text", TextInputControlMatchers.hasText(finalText));
+
+    }
+    @Test
+    @DisplayName("Division by zero expression isn't saved to DB")
+    public void testDivisionByZeroHistory(){
+        for (int i=0;i<10;i++){
+            clickOn("#one");
+            clickOn("#plus");
+            clickOn("#two");
+            clickOn("#equals");
+        }
+        clickOn("#one");
+        clickOn("#div");
+        clickOn("#zero");
+        clickOn("#equals");
+        clickOn("#history");
+        String finalText = "\n";
+        for (int i=0;i<9;i++){
+            finalText=finalText+"1+2=3"+"\n";
+        }
+        finalText=finalText+"1+2=3";
+        verifyThat("#text",TextInputControlMatchers.hasText(finalText));
 
     }
 }
