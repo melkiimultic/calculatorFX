@@ -25,9 +25,6 @@ public class CalculatorController {
     private boolean secondHasPoint = false;
     private boolean positiveSecNum = true;
 
-    private final CalculatorDataSource dataSource = CalculatorDataSource.getInstance();
-
-
     @FXML
     public void pressNumbers(ActionEvent event) {
         if (start) {
@@ -138,7 +135,7 @@ public class CalculatorController {
         String finalText = result.getText() + "=" + output;
         result.setText(finalText);
         resetFlags();
-        dataSource.saveExpression(finalText);//todo transactional
+        CalculatorDataSource.saveExpression(finalText);//todo transactional
     }
 
     @FXML

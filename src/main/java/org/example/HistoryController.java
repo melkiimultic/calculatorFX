@@ -10,12 +10,10 @@ import java.util.List;
 
 public class HistoryController {
 
-    private CalculatorDataSource dataSource = CalculatorDataSource.getInstance();
-
     @FXML
     private TextArea text;
 
-    void showHistory(Parent root){
+    void showHistory(Parent root) {
         Scene scene = new Scene(root, 400, 400);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -24,12 +22,11 @@ public class HistoryController {
     }
 
 
-    private void getHistory(){
-        List<String> expressions = dataSource.selectAll();
+    private void getHistory() {
+        List<String> expressions = CalculatorDataSource.selectAll();
         for (String s : expressions) {
-            text.setText(text.getText()+"\n"+s);
+            text.setText(text.getText() + "\n" + s);
         }
-
 
     }
 }
