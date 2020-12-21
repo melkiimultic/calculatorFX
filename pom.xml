@@ -82,6 +82,9 @@
                 <version>3.0.0-M4</version>
                 <configuration>
                     <forkCount>0</forkCount><!--otherwise fails trying to create fork-->
+                    <argLine>
+                        --add-exports javafx.graphics/com.sun.javafx.application==ALL-UNNAMED
+                    </argLine>
                 </configuration>
             </plugin>
         </plugins>

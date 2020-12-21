@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -9,123 +10,183 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.CalculatorController">
    <children>
-      <StackPane prefHeight="150.0" prefWidth="200.0">
+      <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-color: #000000; -fx-border-width: 5;">
          <children>
-            <Label fx:id="result" prefHeight="80.0" prefWidth="500.0" wrapText="true">
+            <Label fx:id="result" prefHeight="102.0" prefWidth="500.0" wrapText="true">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
          </children>
+         <effect>
+            <InnerShadow radius="4.75" width="0.0" />
+         </effect>
       </StackPane>
       <HBox prefHeight="100.0" prefWidth="500.0">
          <children>
-            <Button fx:id="seven" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="7">
+            <Button fx:id="seven" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #132536;" text="7" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
+               </effect>
             </Button>
-            <Button fx:id="eight" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="8">
+            <Button fx:id="eight" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #132536;" text="8" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
+               </effect>
             </Button>
-            <Button fx:id="nine" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="9">
+            <Button fx:id="nine" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #132536;" text="9" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
+               </effect>
             </Button>
-            <Button fx:id="plus" mnemonicParsing="false" onAction="#pressRestThreeOperators" prefHeight="100.0" prefWidth="100.0" text="+">
+            <Button fx:id="plus" mnemonicParsing="false" onAction="#pressRestThreeOperators" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #132536;" text="+" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
+               </effect>
             </Button>
-            <Button fx:id="minus" mnemonicParsing="false" onAction="#pressMinus" prefHeight="100.0" prefWidth="100.0" text="-">
+            <Button fx:id="minus" mnemonicParsing="false" onAction="#pressMinus" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #132536;" text="-" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
+               </effect>
             </Button>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="500.0">
          <children>
-            <Button fx:id="four" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="4">
+            <Button fx:id="four" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #132536;" text="4" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
+               </effect>
             </Button>
-            <Button fx:id="five" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="5">
+            <Button fx:id="five" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #132536;" text="5" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
+               </effect>
             </Button>
-            <Button fx:id="six" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="6">
+            <Button fx:id="six" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #132536;" text="6" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
+               </effect>
             </Button>
-            <Button fx:id="div" mnemonicParsing="false" onAction="#pressRestThreeOperators" prefHeight="100.0" prefWidth="100.0" text="/">
+            <Button fx:id="div" mnemonicParsing="false" onAction="#pressRestThreeOperators" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #132536;" text="/" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
+               </effect>
             </Button>
-            <Button fx:id="mult" mnemonicParsing="false" onAction="#pressRestThreeOperators" prefHeight="100.0" prefWidth="100.0" text="*">
+            <Button fx:id="mult" mnemonicParsing="false" onAction="#pressRestThreeOperators" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #132536;" text="*" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
+               </effect>
             </Button>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="500.0">
          <children>
-            <Button fx:id="one" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="1">
+            <Button fx:id="one" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #132536;" text="1" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
+               </effect>
             </Button>
-            <Button fx:id="two" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="2">
+            <Button fx:id="two" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #132536;" text="2" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
+               </effect>
             </Button>
-            <Button fx:id="three" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="3">
+            <Button fx:id="three" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #132536;" text="3" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
+               </effect>
             </Button>
-            <Button fx:id="del" mnemonicParsing="false" onAction="#pressDelete" prefHeight="100.0" prefWidth="100.0" text="DEL">
+            <Button fx:id="del" mnemonicParsing="false" onAction="#pressDelete" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #C34B0B;" text="DEL" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
+               </effect>
             </Button>
-            <Button fx:id="clear" mnemonicParsing="false" onAction="#pressClear" prefHeight="100.0" prefWidth="100.0" text="CLR">
+            <Button fx:id="clear" mnemonicParsing="false" onAction="#pressClear" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #A92B09;" text="CLR" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
+               </effect>
             </Button>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="500.0">
          <children>
-            <Button fx:id="zero" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" text="0">
+            <Button fx:id="zero" mnemonicParsing="false" onAction="#pressNumbers" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #132536;" text="0" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
+               </effect>
             </Button>
-            <Button fx:id="point" mnemonicParsing="false" onAction="#pressPoint" prefHeight="100.0" prefWidth="100.0" text=".">
+            <Button fx:id="point" mnemonicParsing="false" onAction="#pressPoint" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #132536;" text="." textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
+               </effect>
             </Button>
-            <Button fx:id="equals" mnemonicParsing="false" onAction="#pressEquals" prefHeight="100.0" prefWidth="100.0" text="=">
+            <Button fx:id="equals" mnemonicParsing="false" onAction="#pressEquals" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #132536;" text="=" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
+               </effect>
             </Button>
-            <Button fx:id="history" mnemonicParsing="false" onAction="#pressHistory" prefHeight="100.0" prefWidth="200.0" text="HISTORY">
+            <Button fx:id="history" mnemonicParsing="false" onAction="#pressHistory" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #132536;" text="HISTORY" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" height="7.0" radius="3.0375" width="7.15" />
+               </effect>
             </Button>
          </children>
       </HBox>
