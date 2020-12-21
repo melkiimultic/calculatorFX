@@ -6,9 +6,9 @@ import java.util.stream.Stream;
 
 
 public enum Operator {
-    PLUS("+"), MINUS("-"), DIVIDE("/"), MULTIPLY("*");
+    PLUS("+"), MINUS("-"), DIVIDE("/"), MULTIPLY("*"), NOOP("");
 
-    private final String textValue;
+    final String textValue;
 
     Operator(String textValue) {
         this.textValue = textValue;
@@ -39,6 +39,8 @@ public enum Operator {
                 }
                 result = first.divide(second, 9, RoundingMode.HALF_UP).stripTrailingZeros();
                 break;
+            case NOOP:
+                return "";
             default:
                 throw new IllegalArgumentException("Add logic for operator " + this);
         }

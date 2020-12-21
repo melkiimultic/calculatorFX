@@ -18,7 +18,6 @@ public class CalculatorDataSource {
         if (instance == null) {
             instance = new CalculatorDataSource();
         }
-
         return instance;
     }
 

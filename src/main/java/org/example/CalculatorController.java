@@ -17,10 +17,9 @@ public class CalculatorController {
     @FXML
     private Label result;
 
-
     private BigDecimal num1 = new BigDecimal(0);
     private BigDecimal num2 = new BigDecimal(0);
-    private String operator = "";
+    private Operator operator = Operator.NOOP;
     private boolean start = true;
     private boolean firstHasPoint = false;
     private boolean secondHasPoint = false;
@@ -49,12 +48,12 @@ public class CalculatorController {
             return;
         }
         String text = result.getText();
-        if (operator.isEmpty()) {
+        if (operator == Operator.NOOP) {
             if (firstHasPoint) {
                 return;
             }
 
-            if (text.equals("-")) {
+            if (text.equals(Operator.MINUS.textValue)) {
                 result.setText("-0.");
                 firstHasPoint = true;
                 return;
@@ -68,7 +67,8 @@ public class CalculatorController {
             return;
         }
 
-        if (StringUtils.endsWith(text, operator) || StringUtils.endsWith(text, "-")) {
+        if (StringUtils.endsWith(text, operator.textValue)
+                || StringUtils.endsWith(text, Operator.MINUS.textValue)) {
             result.setText(text + "0.");
             secondHasPoint = true;
             return;
@@ -81,34 +81,34 @@ public class CalculatorController {
     @FXML
     public void pressMinus(ActionEvent event) {
         if (start) {
-            result.setText("-");
+            result.setText(Operator.MINUS.textValue);
             start = false;
             return;
         }
         String text = result.getText();
-        if (text.equals("-")) {
+        if (text.equals(Operator.MINUS.textValue)) {
             return;
         }
-        if (operator.isEmpty()) {
-            operator = "-";
+        if (operator == Operator.NOOP) {
+            operator = Operator.MINUS;
             num1 = new BigDecimal(text);
-            result.setText(text + "-");
+            result.setText(text + Operator.MINUS.textValue);
             return;
         }
         if (!positiveSecNum) {
             return;
         }
-        result.setText(text + "-");
+        result.setText(text + Operator.MINUS.textValue);
         positiveSecNum = false;
     }
 
     @FXML
     public void pressRestThreeOperators(ActionEvent event) {
-        if (start || !operator.isEmpty()) {
+        if (start || operator != Operator.NOOP) {
             return;
         }
         String operValue = ((Button) event.getSource()).getText();
-        operator = operValue;
+        operator = Operator.parse(operValue);
         String text = result.getText();
         num1 = new BigDecimal(text);
         result.setText(text + operValue);
@@ -116,20 +116,20 @@ public class CalculatorController {
 
     @FXML
     public void pressEquals(ActionEvent event) {
-        if (start || operator.isEmpty()) {
+        if (start || operator == Operator.NOOP) {
             return;
         }
         String text = result.getText();
-        if (text.endsWith(operator) || text.endsWith("-")) {
+        if (text.endsWith(operator.textValue) || text.endsWith(Operator.MINUS.textValue)) {
             return;
         }
-        String[] splitted = StringUtils.split(text, operator);
+        String[] splitted = StringUtils.split(text, operator.textValue);
         String secNum = splitted[1];
-        if (!positiveSecNum && operator.equals("-")) {
-            secNum = "-" + secNum;
+        if (!positiveSecNum && operator == Operator.MINUS) {
+            secNum = Operator.MINUS.textValue + secNum;
         }
         num2 = new BigDecimal(secNum);
-        String output = Operator.parse(operator).apply(num1, num2);
+        String output = operator.apply(num1, num2);
         if (output.equals("Division by zero!")) {
             result.setText(output);
             resetFlags();
@@ -157,19 +157,19 @@ public class CalculatorController {
         if (!result.getText().isEmpty()) {
             String current = result.getText();
 
-            if (operator.isEmpty() && StringUtils.endsWith(current, ".")) {
+            if (operator == Operator.NOOP && StringUtils.endsWith(current, ".")) {
                 firstHasPoint = false;
             }
 
-            if (!operator.isEmpty()) {
-                if (StringUtils.endsWith(current, "-") && !positiveSecNum) {
+            if (operator != Operator.NOOP) {
+                if (StringUtils.endsWith(current, Operator.MINUS.textValue) && !positiveSecNum) {
                     positiveSecNum = true;
                     String chopped = StringUtils.chop(current);
                     result.setText(chopped);
                     return;
                 }
-                if (StringUtils.endsWith(current, operator)) {
-                    operator = "";
+                if (StringUtils.endsWith(current, operator.textValue)) {
+                    operator = Operator.NOOP;
                 }
                 if (StringUtils.endsWith(current, ".")) {
                     secondHasPoint = false;
@@ -190,7 +190,6 @@ public class CalculatorController {
             Parent root = loader.load();
             HistoryController controller = loader.getController();
             controller.showHistory(root);
-
         } catch (IOException e) {
             throw new IllegalStateException("Can't create history window");
         }
@@ -198,7 +197,7 @@ public class CalculatorController {
 
 
     private void resetFlags() {
-        operator = "";
+        operator = Operator.NOOP;
         start = true;
         firstHasPoint = false;
         secondHasPoint = false;
