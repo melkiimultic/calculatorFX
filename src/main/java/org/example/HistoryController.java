@@ -12,7 +12,6 @@ public class HistoryController {
 
     private CalculatorDataSource dataSource = CalculatorDataSource.getInstance();
 
-
     @FXML
     private TextArea text;
 

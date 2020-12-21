@@ -48,7 +48,7 @@
                   <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
                </effect>
             </Button>
-            <Button fx:id="plus" mnemonicParsing="false" onAction="#pressRestThreeOperators" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #132536;" text="+" textFill="WHITE">
+            <Button fx:id="plus" mnemonicParsing="false" onAction="#pressRestThreeOperators" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #2a4b5f;" text="+" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
@@ -56,7 +56,7 @@
                   <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
                </effect>
             </Button>
-            <Button fx:id="minus" mnemonicParsing="false" onAction="#pressMinus" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #132536;" text="-" textFill="WHITE">
+            <Button fx:id="minus" mnemonicParsing="false" onAction="#pressMinus" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #2a4b5f;" text="-" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
@@ -92,7 +92,7 @@
                   <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
                </effect>
             </Button>
-            <Button fx:id="div" mnemonicParsing="false" onAction="#pressRestThreeOperators" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #132536;" text="/" textFill="WHITE">
+            <Button fx:id="div" mnemonicParsing="false" onAction="#pressRestThreeOperators" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #2a4b5f;" text="/" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
@@ -100,7 +100,7 @@
                   <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
                </effect>
             </Button>
-            <Button fx:id="mult" mnemonicParsing="false" onAction="#pressRestThreeOperators" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #132536;" text="*" textFill="WHITE">
+            <Button fx:id="mult" mnemonicParsing="false" onAction="#pressRestThreeOperators" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #2a4b5f;" text="*" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
@@ -172,7 +172,7 @@
                   <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
                </effect>
             </Button>
-            <Button fx:id="equals" mnemonicParsing="false" onAction="#pressEquals" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #132536;" text="=" textFill="WHITE">
+            <Button fx:id="equals" mnemonicParsing="false" onAction="#pressEquals" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #2a4b5f;" text="=" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
@@ -180,7 +180,7 @@
                   <InnerShadow blurType="GAUSSIAN" height="23.76" radius="7.8225" width="9.53" />
                </effect>
             </Button>
-            <Button fx:id="history" mnemonicParsing="false" onAction="#pressHistory" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #132536;" text="HISTORY" textFill="WHITE">
+            <Button fx:id="history" mnemonicParsing="false" onAction="#pressHistory" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #f2b33f;" text="HISTORY" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

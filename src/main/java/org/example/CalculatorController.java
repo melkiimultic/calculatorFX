@@ -26,9 +26,7 @@ public class CalculatorController {
     private boolean secondHasPoint = false;
     private boolean positiveSecNum = true;
 
-
-    Model model = new Model();
-    CalculatorDataSource dataSource = CalculatorDataSource.getInstance();
+    private final CalculatorDataSource dataSource = CalculatorDataSource.getInstance();
 
 
     @FXML
@@ -114,7 +112,6 @@ public class CalculatorController {
         String text = result.getText();
         num1 = new BigDecimal(text);
         result.setText(text + operValue);
-
     }
 
     @FXML
@@ -132,7 +129,7 @@ public class CalculatorController {
             secNum = "-" + secNum;
         }
         num2 = new BigDecimal(secNum);
-        String output = model.calculate(num1, num2, operator);
+        String output = Model.calculate(num1, num2, operator);
         if (output.equals("Division by zero!")) {
             result.setText(output);
             resetFlags();
@@ -185,15 +182,16 @@ public class CalculatorController {
         }
 
     }
+
     @FXML
-    private void pressHistory(){
+    private void pressHistory() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("history.fxml"));
             Parent root = loader.load();
             HistoryController controller = loader.getController();
             controller.showHistory(root);
 
-        } catch (IOException e){
+        } catch (IOException e) {
             throw new IllegalStateException("Can't create history window");
         }
     }
@@ -206,7 +204,6 @@ public class CalculatorController {
         secondHasPoint = false;
         positiveSecNum = true;
     }
-
 
 
 }

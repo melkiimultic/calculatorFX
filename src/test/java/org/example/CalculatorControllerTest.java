@@ -11,8 +11,6 @@ import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit5.ApplicationTest;
 import org.testfx.matcher.control.TextInputControlMatchers;
 
-import java.awt.*;
-
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.control.LabeledMatchers.hasText;
 
@@ -41,10 +39,6 @@ public class CalculatorControllerTest extends ApplicationTest {
         System.setProperty("prism.order", "sw");
         System.setProperty("prism.text", "t2k");
         System.setProperty("java.awt.headless", "true");
-    }
-
-    @BeforeEach
-    public void setUp() throws Exception {
     }
 
     @AfterEach
