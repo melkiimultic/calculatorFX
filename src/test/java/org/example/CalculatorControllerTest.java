@@ -6,13 +6,12 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit5.ApplicationTest;
 import org.testfx.matcher.control.TextInputControlMatchers;
+
+import java.awt.*;
 
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.control.LabeledMatchers.hasText;
@@ -26,6 +25,22 @@ public class CalculatorControllerTest extends ApplicationTest {
         stage.setScene(new Scene(mainNode));
         stage.show();
         stage.toFront();
+    }
+
+    @BeforeAll
+    static void setUpHeadlessMode() {
+        if (!Boolean.getBoolean("headless")) {
+            System.out.println("Run in usual mode");
+            return;
+        }
+        System.out.println("Run in headless mode");
+        //🙀🙀🙀 https://github.com/javafxports/openjdk-jfx/issues/66#issuecomment-468370664
+        System.load("C:\\Windows\\System32\\WindowsCodecs.dll");
+        System.setProperty("testfx.robot", "glass");
+        System.setProperty("testfx.headless", "true");
+        System.setProperty("prism.order", "sw");
+        System.setProperty("prism.text", "t2k");
+        System.setProperty("java.awt.headless", "true");
     }
 
     @BeforeEach
@@ -137,6 +152,7 @@ public class CalculatorControllerTest extends ApplicationTest {
         clickOn("#equals");
         verifyThat("#result", hasText("-2/-1=2"));
     }
+
     @Test
     @DisplayName("can't insert second minus before first num")
     public void testMinusBeforeFirstNum() {
@@ -194,6 +210,7 @@ public class CalculatorControllerTest extends ApplicationTest {
         verifyThat("#result", hasText("1-"));
 
     }
+
     @Test
     @DisplayName("can't put second point after deleting operator")
     public void testPointWithDeleteLogic() {
@@ -206,14 +223,15 @@ public class CalculatorControllerTest extends ApplicationTest {
         verifyThat("#result", hasText("1.2"));
 
     }
+
     @Test
     @DisplayName("history button shows ten last expressions")
-    public void testPressHistory(){
+    public void testPressHistory() {
         clickOn("#two");
         clickOn("#plus");
         clickOn("#two");
         clickOn("#equals");
-        for (int i=0;i<10;i++){
+        for (int i = 0; i < 10; i++) {
             clickOn("#one");
             clickOn("#plus");
             clickOn("#two");
@@ -221,17 +239,18 @@ public class CalculatorControllerTest extends ApplicationTest {
         }
         clickOn("#history");
         String finalText = "\n";
-        for (int i=0;i<9;i++){
-            finalText=finalText+"1+2=3"+"\n";
+        for (int i = 0; i < 9; i++) {
+            finalText = finalText + "1+2=3" + "\n";
         }
-        finalText=finalText+"1+2=3";
+        finalText = finalText + "1+2=3";
         verifyThat("#text", TextInputControlMatchers.hasText(finalText));
 
     }
+
     @Test
     @DisplayName("Division by zero expression isn't saved to DB")
-    public void testDivisionByZeroHistory(){
-        for (int i=0;i<10;i++){
+    public void testDivisionByZeroHistory() {
+        for (int i = 0; i < 10; i++) {
             clickOn("#one");
             clickOn("#plus");
             clickOn("#two");
@@ -243,11 +262,11 @@ public class CalculatorControllerTest extends ApplicationTest {
         clickOn("#equals");
         clickOn("#history");
         String finalText = "\n";
-        for (int i=0;i<9;i++){
-            finalText=finalText+"1+2=3"+"\n";
+        for (int i = 0; i < 9; i++) {
+            finalText = finalText + "1+2=3" + "\n";
         }
-        finalText=finalText+"1+2=3";
-        verifyThat("#text",TextInputControlMatchers.hasText(finalText));
+        finalText = finalText + "1+2=3";
+        verifyThat("#text", TextInputControlMatchers.hasText(finalText));
 
     }
 }
