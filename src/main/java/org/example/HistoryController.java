@@ -25,10 +25,10 @@ public class HistoryController {
 
 
     void showHistory(Parent root){
-        Scene scene = new Scene(root, 500, 500);
+        Scene scene = new Scene(root, 400, 400);
         Stage stage = new Stage();
-        text.maxWidthProperty().bind(pane.widthProperty());
-        text.maxHeightProperty().bind(pane.heightProperty());
+//        text.maxWidthProperty().bind(pane.widthProperty());
+//        text.maxHeightProperty().bind(pane.heightProperty());
         stage.setScene(scene);
         stage.show();
         getHistory();

@@ -17,6 +17,7 @@ public class CalculatorController {
     @FXML
     private Label result;
 
+
     private BigDecimal num1 = new BigDecimal(0);
     private BigDecimal num2 = new BigDecimal(0);
     private String operator = "";
@@ -28,6 +29,10 @@ public class CalculatorController {
 
     Model model = new Model();
     CalculatorDataSource dataSource = CalculatorDataSource.getInstance();
+
+    public void configLabel(){
+        this.result.setWrapText(true);
+    }
 
     @FXML
     public void pressNumbers(ActionEvent event) {

@@ -11,7 +11,7 @@
    <children>
       <StackPane prefHeight="150.0" prefWidth="200.0">
          <children>
-            <Label fx:id="result" prefHeight="80.0" prefWidth="500.0">
+            <Label fx:id="result" prefHeight="80.0" prefWidth="500.0" wrapText="true">
                <font>
                   <Font size="24.0" />
                </font>
