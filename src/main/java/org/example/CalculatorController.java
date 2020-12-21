@@ -129,7 +129,7 @@ public class CalculatorController {
             secNum = "-" + secNum;
         }
         num2 = new BigDecimal(secNum);
-        String output = Model.calculate(num1, num2, operator);
+        String output = Operator.parse(operator).apply(num1, num2);
         if (output.equals("Division by zero!")) {
             result.setText(output);
             resetFlags();
