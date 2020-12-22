@@ -40,9 +40,8 @@ public enum Operator {
                 result = first.divide(second, 9, RoundingMode.HALF_UP).stripTrailingZeros();
                 break;
             case NOOP:
-                return "";
             default:
-                throw new IllegalArgumentException("Add logic for operator " + this);
+                throw new IllegalArgumentException("Unknown operator " + this);
         }
         return result.toPlainString();
     }

@@ -11,10 +11,12 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit5.ApplicationTest;
 import org.testfx.matcher.control.TextInputControlMatchers;
 
+import java.io.File;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -25,12 +27,20 @@ import static org.testfx.matcher.control.LabeledMatchers.hasText;
 
 public class CalculatorControllerTest extends ApplicationTest {
 
+    @TempDir
+    static File tempDir;
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent mainNode = FXMLLoader.load(App.class.getResource("calculator.fxml"));
         stage.setScene(new Scene(mainNode));
         stage.show();
         stage.toFront();
+    }
+
+    @BeforeAll
+    static void setupTempDb() {
+        System.setProperty("DB_URL", "jdbc:sqlite:" + tempDir.getAbsolutePath() + "/myCalcTest.db");
     }
 
     @BeforeAll
