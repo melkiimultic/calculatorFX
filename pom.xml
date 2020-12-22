@@ -91,6 +91,7 @@
                     <forkCount>0</forkCount><!--otherwise fails trying to create fork-->
                     <systemPropertyVariables>
                         <headless>true</headless>
+                        <DB_URL>jdbc:sqlite:myCalcTest.db</DB_URL>
                     </systemPropertyVariables>
                     <argLine>
                         --add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED

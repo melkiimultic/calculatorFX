@@ -7,6 +7,7 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class HistoryController {
 
@@ -21,12 +22,9 @@ public class HistoryController {
         getHistory();
     }
 
-
     private void getHistory() {
         List<String> expressions = CalculatorDataSource.selectAll();
-        for (String s : expressions) {
-            text.setText(text.getText() + "\n" + s);
-        }
-
+        String history = expressions.stream().collect(Collectors.joining("\n"));
+        text.setText("\n" + history);
     }
 }

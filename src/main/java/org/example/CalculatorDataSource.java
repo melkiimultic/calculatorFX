@@ -8,7 +8,7 @@ import java.util.List;
 
 public class CalculatorDataSource {
 
-    private static final String CON_STR = "jdbc:sqlite:myCalc.db";
+    private static final String DEFAULT_DB_URL = "jdbc:sqlite:myCalc.db";
 
     static {
         try {
@@ -20,7 +20,11 @@ public class CalculatorDataSource {
     }
 
     private static Connection getConnection() throws SQLException {
-        Connection connection = DriverManager.getConnection(CON_STR);
+        String dbUrl = System.getProperty("DB_URL");
+        if (dbUrl == null) {
+            dbUrl = DEFAULT_DB_URL;
+        }
+        Connection connection = DriverManager.getConnection(dbUrl);
         connection.setAutoCommit(false);
         return connection;
     }
@@ -55,7 +59,7 @@ public class CalculatorDataSource {
         try {
             connection = getConnection();
             Statement stmt = connection.createStatement();
-            ResultSet set = stmt.executeQuery("SElECT expression FROM Calculations");
+            ResultSet set = stmt.executeQuery("SELECT expression FROM Calculations");
             while (set.next()) {
                 expressions.add(set.getString("expression"));
             }
@@ -70,7 +74,6 @@ public class CalculatorDataSource {
                 exception.printStackTrace();
             }
         }
-
         return expressions;
     }
 

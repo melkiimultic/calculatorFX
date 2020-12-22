@@ -6,11 +6,19 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
-import org.junit.jupiter.api.*;
+import org.hamcrest.core.StringContains;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit5.ApplicationTest;
 import org.testfx.matcher.control.TextInputControlMatchers;
 
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static org.hamcrest.CoreMatchers.not;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.control.LabeledMatchers.hasText;
 
@@ -190,7 +198,6 @@ public class CalculatorControllerTest extends ApplicationTest {
         verifyThat("#result", hasText(""));
         clickOn("#equals");
         verifyThat("#result", hasText(""));
-
     }
 
     @Test
@@ -232,11 +239,9 @@ public class CalculatorControllerTest extends ApplicationTest {
             clickOn("#equals");
         }
         clickOn("#history");
-        String finalText = "\n";
-        for (int i = 0; i < 9; i++) {
-            finalText = finalText + "1+2=3" + "\n";
-        }
-        finalText = finalText + "1+2=3";
+        String finalText = "\n" + Stream.generate(() -> "1+2=3")
+                .limit(10)
+                .collect(Collectors.joining("\n"));
         verifyThat("#text", TextInputControlMatchers.hasText(finalText));
 
     }
@@ -244,23 +249,11 @@ public class CalculatorControllerTest extends ApplicationTest {
     @Test
     @DisplayName("Division by zero expression isn't saved to DB")
     public void testDivisionByZeroHistory() {
-        for (int i = 0; i < 10; i++) {
-            clickOn("#one");
-            clickOn("#plus");
-            clickOn("#two");
-            clickOn("#equals");
-        }
         clickOn("#one");
         clickOn("#div");
         clickOn("#zero");
         clickOn("#equals");
         clickOn("#history");
-        String finalText = "\n";
-        for (int i = 0; i < 9; i++) {
-            finalText = finalText + "1+2=3" + "\n";
-        }
-        finalText = finalText + "1+2=3";
-        verifyThat("#text", TextInputControlMatchers.hasText(finalText));
-
+        verifyThat("#text", TextInputControlMatchers.hasText(not(StringContains.containsString("Division by zero!"))));
     }
 }
