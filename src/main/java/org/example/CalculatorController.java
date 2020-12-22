@@ -33,7 +33,6 @@ public class CalculatorController {
         }
         String numValue = ((Button) event.getSource()).getText();
         result.setText(result.getText() + numValue);
-
     }
 
     @FXML
@@ -135,14 +134,13 @@ public class CalculatorController {
         String finalText = result.getText() + "=" + output;
         result.setText(finalText);
         resetFlags();
-        CalculatorDataSource.saveExpression(finalText);//todo transactional
+        CalculatorDataSource.saveExpression(finalText);
     }
 
     @FXML
     public void pressClear(ActionEvent event) {
         result.setText("");
         resetFlags();
-
     }
 
     @FXML
@@ -150,14 +148,12 @@ public class CalculatorController {
         if (start) {
             return;
         }
-
         if (!result.getText().isEmpty()) {
             String current = result.getText();
 
             if (operator == Operator.NOOP && StringUtils.endsWith(current, ".")) {
                 firstHasPoint = false;
             }
-
             if (operator != Operator.NOOP) {
                 if (StringUtils.endsWith(current, Operator.MINUS.textValue) && !positiveSecNum) {
                     positiveSecNum = true;
@@ -170,16 +166,13 @@ public class CalculatorController {
                 }
                 if (StringUtils.endsWith(current, ".")) {
                     secondHasPoint = false;
-
                 }
             }
-
             String chopped = StringUtils.chop(current);
             result.setText(chopped);
         }
 
     }
-
     @FXML
     private void pressHistory() {
         try {
@@ -192,7 +185,6 @@ public class CalculatorController {
         }
     }
 
-
     private void resetFlags() {
         operator = Operator.NOOP;
         start = true;
@@ -200,8 +192,6 @@ public class CalculatorController {
         secondHasPoint = false;
         positiveSecNum = true;
     }
-
-
 }
 
 

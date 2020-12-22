@@ -8,6 +8,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <headless>true</headless>
     </properties>
     <dependencies>
         <dependency>
@@ -90,7 +91,7 @@
                 <configuration>
                     <forkCount>0</forkCount><!--otherwise fails trying to create fork-->
                     <systemPropertyVariables>
-                        <headless>true</headless>
+                        <headless>${headless}</headless>
                     </systemPropertyVariables>
                     <argLine>
                         --add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED

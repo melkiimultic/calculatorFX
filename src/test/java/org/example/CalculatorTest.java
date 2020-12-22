@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
+import org.apache.commons.lang3.SystemUtils;
 import org.hamcrest.core.StringContains;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -25,7 +26,7 @@ import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.control.LabeledMatchers.hasText;
 
 
-public class CalculatorControllerTest extends ApplicationTest {
+public class CalculatorTest extends ApplicationTest {
 
     @TempDir
     static File tempDir;
@@ -49,9 +50,11 @@ public class CalculatorControllerTest extends ApplicationTest {
             System.out.println("Run in usual mode");
             return;
         }
-        System.out.println("Run in headless mode");
-        //🙀🙀🙀 https://github.com/javafxports/openjdk-jfx/issues/66#issuecomment-468370664
-        System.load("C:\\Windows\\System32\\WindowsCodecs.dll");
+
+        if (SystemUtils.IS_OS_WINDOWS) {
+            //🙀🙀🙀 https://github.com/javafxports/openjdk-jfx/issues/66#issuecomment-468370664
+            System.load("C:\\Windows\\System32\\WindowsCodecs.dll");
+        }
         System.setProperty("testfx.robot", "glass");
         System.setProperty("testfx.headless", "true");
         System.setProperty("prism.order", "sw");
