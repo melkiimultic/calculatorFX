@@ -7,7 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import org.apache.commons.lang3.StringUtils;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 
@@ -82,6 +81,9 @@ public class CalculatorController {
             return;
         }
         String text = result.getText();
+        if (StringUtils.endsWith(text,".")){
+           text=text+"0";
+        }
         if (text.equals(Operator.MINUS.textValue)) {
             return;
         }
@@ -106,6 +108,9 @@ public class CalculatorController {
         String operValue = ((Button) event.getSource()).getText();
         operator = Operator.parse(operValue);
         String text = result.getText();
+        if (StringUtils.endsWith(text,".")){
+            text=text+"0";
+        }
         num1 = new BigDecimal(text);
         result.setText(text + operValue);
     }
@@ -116,8 +121,12 @@ public class CalculatorController {
             return;
         }
         String text = result.getText();
-        if (text.endsWith(operator.textValue) || text.endsWith(Operator.MINUS.textValue)) {
+
+        if (StringUtils.endsWith(text,operator.textValue)|| StringUtils.endsWith(text,Operator.MINUS.textValue)) {
             return;
+        }
+        if (StringUtils.endsWith(text,".")){
+            text=text+"0";
         }
         String[] splitted = StringUtils.split(text, operator.textValue);
         String secNum = splitted[1];
@@ -131,7 +140,7 @@ public class CalculatorController {
             resetFlags();
             return;
         }
-        String finalText = result.getText() + "=" + output;
+        String finalText = text+ "=" + output;
         result.setText(finalText);
         resetFlags();
         CalculatorDataSource.saveExpression(finalText);

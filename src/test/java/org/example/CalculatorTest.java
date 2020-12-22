@@ -155,6 +155,28 @@ public class CalculatorTest extends ApplicationTest {
         clickOn("#equals");
         verifyThat("#result", hasText("0.1+0.2=0.3"));
     }
+    @Test
+    @DisplayName("Add zero if there are no numerals after pont")
+    public void testAddMissingZeroAfterWhenOtherOperators() {
+        clickOn("#six");
+        clickOn("#point");
+        clickOn("#div");
+        clickOn("#two");
+        clickOn("#point");
+        clickOn("#equals");
+        verifyThat("#result", hasText("6.0/2.0=3"));
+    }
+    @Test
+    @DisplayName("Add zero if there are no numerals after pont and operator is minus")
+    public void testAddMissingZeroAfterWhenMinus() {
+        clickOn("#six");
+        clickOn("#point");
+        clickOn("#minus");
+        clickOn("#two");
+        clickOn("#point");
+        clickOn("#equals");
+        verifyThat("#result", hasText("6.0-2.0=4"));
+    }
 
     @Test
     @DisplayName("can insert minus after operator")
